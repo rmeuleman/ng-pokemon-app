@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <app-search-pokemon></app-search-pokemon>
+    <div *ngFor="let pokemon of pokemonList" class="col s12 m4">
+      <div (click)="goToPokemon(pokemon)" class="card horizontal" pokemonBorderCard="teal">
+        <div class="card-image">
+          <img [src]="pokemon.picture">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h5>{{pokemon.name}}</h5>
+            <p>{{pokemon.created | date:"dd/MM/yyyy" }}</p>
+            <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
+              {{type}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="btn-floating btn-large waves-effect waves-light red z-depth-3"
+   style="position: fixed; bottom: 25px; right: 25px;"
+   routerLink="/pokemon/add">+</a>
